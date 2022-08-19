@@ -1,73 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>EPUB Unicode Checker</title>
+    <title>Amazon EPUB Fix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="white"/>
+    <meta name="theme-color" content="white" />
     <script src="https://unpkg.com/@zip.js/zip.js@2.6.12/dist/zip.min.js"></script>
     <script src="https://unpkg.com/file-saver@2.0.5/dist/FileSaver.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"> -->
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm_theme_mischka.min.css">
     <link rel="manifest" href="/static/manifest.json">
     <link rel="icon" href="/static/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
-	<style>
-	input {
-		margin-top: 1rem;
-	}
+    <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
-	input::file-selector-button {
-		font-weight: bold;
-		color: blue;
-		padding: 2em;
-		border: thin solid grey;
-		border-radius: 5px;
-	}
-
-	</style>
 </head>
+
 <body>
-<h1>Amazon EPUB Fix</h1>
-<p>
-    Amazon Send-to-Kindle service has accepted EPUB, however, for historical reason
-    it still assumes ISO-8859-1 encoding if no encoding is specified. This creates weird formatting errors for special
-    characters.
-</p>
-<p>
-    This tool will try to fix your EPUB by adding the UTF-8 specification to your EPUB. It currently does
-    not fix other errors.
-</p>
-<p>
-    <b>Privacy:</b> The book is processed locally in your browser. We do not upload your file anywhere.
-</p>
-<p>
-    <b>Warning: </b> This tool come at no warranty. Please still keep your original EPUB.
-    We don't guarantee the resulting file will be valid EPUB file, but it should.
-</p>
+    <h1>Amazon EPUB Fix</h1>
 
-<h2>Select your EPUB</h2>
-<form>
+    <p>
+
+        <img src="../static/epubkindle.webp" />
+
+        Amazon Send-to-Kindle service has accepted EPUB, however, for historical reason
+        it still assumes ISO-8859-1 encoding if no encoding is specified. This creates weird formatting errors for
+        special
+        characters.
+    </p>
+
+    <p>
+        This tool will try to fix your EPUB by adding the UTF-8 specification to your EPUB. It currently does
+        not fix other errors.
+    </p>
+    <p>
+        <b>Privacy:</b> The book is processed locally in your browser. We do not upload your file anywhere.
+    </p>
+    <p>
+        <b>Warning: </b> This tool come at no warranty. Please still keep your original EPUB.
+        We don't guarantee the resulting file will be valid EPUB file, but it should.
+    </p>
+    <h2>Select your EPUB</h2>
+    <label for="file" class="custom-file-upload">
+        <i class="fa fa-cloud-upload"></i> Choose EPUB
+    </label>
     <input id="file" type="file" accept=".epub">
-</form>
-<div id="processing" style="display:none;color:blue">
-    Processing...
-</div>
-<div id="sys-error" style="display:none;color:red">
-    The system encountered an error. Perhaps you are not selecting EPUB
-    file?
-</div>
-<div id="no-error" style="display:none;color:blue">
-    No missing encoding detected. Perhaps there are other errors.
-</div>
-<div id="has-error" style="display:none;color:green">
-    Encoding fixed.<br>
-    <button id="btn">Download the fixed file.</button>
-</div>
+    <div>
+        <div id="processing" style="display:none;color:blue">
+            Processing...
+        </div>
+        <div id="sys-error" style="display:none;color:red">
+            The system encountered an error. Perhaps you are not selecting EPUB
+            file?
+        </div>
+        <div id="no-error" style="display:none;color:blue">
+            No missing encoding detected. Perhaps there are other errors.
+        </div>
+        <div id="has-error" style="display:none;color:green">
+            Encoding fixed.<br>
+            <button id="btn">Download the fixed file.</button>
+        </div>
+    </div>
 
-<hr>
+    <hr>
 
-<small>Original Source code is available on <a href="https://github.com/innocenat/kindle-epub-fix" rel="noopener" target="_blank">GitHub.</a></small>
-<script src="/static/main.js"></script>
-<script src="/static/script.js"></script>
+    <small>Original Source code is available on <a href="https://github.com/innocenat/kindle-epub-fix" rel="noopener"
+            target="_blank">GitHub.</a></small>
+    <small>PWA version on <a href="https://github.com/tomesparon/kindle-epub-fix-pwa" rel="noopener"
+            target="_blank">GitHub.</a></small>
+    <script src="/static/main.js"></script>
+    <script src="/static/script.js"></script>
 </body>
+
 </html>
+<style>
+    input[type="file"] {
+        display: none;
+    }
+
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        color: whitesmoke;
+        background: rgb(80, 80, 80);
+        display: inline-block;
+        padding: 60px 82px;
+        cursor: pointer;
+    }
+
+</style>
